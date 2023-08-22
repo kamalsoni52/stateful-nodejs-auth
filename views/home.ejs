@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> URL Shortner Site</h1>
+    <form method="post" action="/url">
+        <h2><label for="url">Enter your URL here:</label></h2>
+        <input type="text" name="url" id="url" placeholder="https://www.example.com">
+        <button>Generate</button>
+    </form>
+    <div>
+        <% if (locals.shortUrl) { %>
+            <h3>Your Short Urls is:- </h3>
+            <h3><%= shortUrl %></h3>
+        <% } %>
+    </div>
+    <div>
+        <% if (locals.allUrls) { %>
+            <table>
+                <thead>
+                    <th>S.no</th>
+                    <th>ShortID</th>
+                    <th>RedirectUrl</th>
+                    <th>TotalClicks</th>
+                </thead>
+                <tbody>
+                    <% allUrls.forEach((urls,index) => { %>
+                        <tr>
+                            <td> <%= index + 1  %>  </td>
+                            <td> <%= urls.shortId %> </td>
+                            <td> <%= urls.redirectURL %> </td>
+                            <td> <%= urls.visitHistory.length %> </td>
+                        </tr>                 
+                    <% }) %>
+                </tbody>
+            </table>
+         
+        <% } %>
+    </div>
+    
+</body>
+</html>
